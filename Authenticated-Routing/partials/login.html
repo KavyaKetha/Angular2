@@ -1,0 +1,14 @@
+<form [ngFormModel]="loginForm">
+    <div [hidden]="error">Incorrect Password (or) Username</div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" ngControl="username">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" ngControl="password">
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="!loginForm.valid" (click)="onSubmit($event)">Login</button>
+    </div>
+</form>
