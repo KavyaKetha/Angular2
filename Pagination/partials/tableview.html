@@ -9,7 +9,7 @@
 <table class="table table-striped">
     <thead>
     <tr >
-        <th *ngFor="#r of columns">{{r.title}} <button (click)="changeSort(r.name)" *ngIf="r.name=='ext'">Sort</button></th>
+        <th *ngFor="#r of columns">{{r.title}} <button (click)="changeSort(r.name)" >Sort</button></th>
     </tr>
   </thead>
     <tr *ngFor="#r of tableData">

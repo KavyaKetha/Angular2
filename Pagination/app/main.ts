@@ -291,8 +291,8 @@ export class AppComponent implements OnInit {
 
         this.sortField = sortCol;
         this.tableData.sort(function(a, b) {
-            console.log(b[sortCol], 'jjj', a[sortCol]);
-            return parseFloat(a[sortCol]) - parseFloat(b[sortCol]);
+            console.log(b[sortCol]< a[sortCol]);
+            return ((b[sortCol] < a[sortCol]) ? -1 : ((b[sortCol] > a[sortCol]) ? 1 : 0));;
         });
 
         // simple sorting
