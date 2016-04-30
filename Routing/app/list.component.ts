@@ -2,11 +2,9 @@ import { Component } from 'angular2/core';
 
 import { ListService } from 'app/list.service';
 
-
 @Component({
     selector: 'my-list',
-    providers : [ListService],
-    
+    providers: [ListService],
     styles: [`
          div { 
      background-color:#EFEFEF;
@@ -20,7 +18,7 @@ import { ListService } from 'app/list.service';
     text-align: center;
   }
     `]
-    templateUrl:'partials/list.html'
+    templateUrl: 'partials/list.html'
 })
 export class ListComponent {
 
