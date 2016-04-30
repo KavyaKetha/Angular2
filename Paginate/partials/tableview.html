@@ -1,0 +1,43 @@
+<input *ngIf="config.filtering" placeholder="Filter"
+       [ngTableFiltering]="config.filtering"
+       (tableChanged)="onChangeTable(config)"/>
+
+<ngTable [config]="config.sorting"
+           (tableChanged)="onChangeTable(config)"
+           [rows]="rows" [columns]="columns">
+</ngTable>
+<!--Hello
+<table>
+    <tr *ngFor="#r of data">
+        <td>
+            {{r.name}}
+        </td>
+        <td>
+            {{r.position}}
+        </td>
+        <td>
+            {{r.office}}
+        </td>
+        <td>
+            {{r.ext}}
+        </td>
+        <td>
+            {{r.startDate}}
+        </td>
+        <td>
+            {{r.salary}}
+        </td>
+    </tr>
+</table>-->
+<pagination *ngIf="config.paging"
+            class="pagination-sm"
+            [(ngModel)]="page"
+            [totalItems]="length"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="numPages = $event">
+</pagination>
+<pre *ngIf="config.paging" class="card card-block card-header">Page:  / </pre>
