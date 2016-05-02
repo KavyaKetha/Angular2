@@ -1,17 +1,10 @@
-<!--<input *ngIf="config.filtering" placeholder="Filter"
-       [ngTableFiltering]="config.filtering"
-       (tableChanged)="onChangeTable(config)"/>-->
-
-<!--<ngTable [config]="config.sorting"
-           (tableChanged)="onChangeTable(config)"
-           [rows]="rows" [columns]="columns">
-</ngTable>-->
 <table class="table table-striped">
     <thead>
-    <tr >
-        <th *ngFor="#r of columns">{{r.title}} <button (click)="changeSort(r.name)" >Sort</button></th>
-    </tr>
-  </thead>
+        <tr >
+            <th *ngFor="#r of columns">{{r.title}} <a href="#"><i  class="glyphicon glyphicon-sort"(click)="changeSort(r.name)"></i>
+            </a></th>
+        </tr>
+    </thead>
     <tr *ngFor="#r of tableData">
         <td>
             {{r.name}}
@@ -34,14 +27,14 @@
     </tr>
 </table>
 <pagination *ngIf="config.paging"
-            class="pagination-sm"
-            [(ngModel)]="page"
-            [totalItems]="length"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
-            [boundaryLinks]="true"
-            [rotate]="false"
-            (pageChanged)="onChangeTable(config, $event)"
-            (numPages)="numPages = $event">
+    class="pagination-sm"
+    [(ngModel)]="page"
+    [totalItems]="length"
+    [itemsPerPage]="itemsPerPage"
+    [maxSize]="maxSize"
+    [boundaryLinks]="true"
+    [rotate]="false"
+    (pageChanged)="onChangeTable(config, $event)"
+    (numPages)="numPages = $event">
 </pagination>
 <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}} </pre>
