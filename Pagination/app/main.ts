@@ -6,7 +6,6 @@ import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/components/pagination';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 import { LoadData } from 'app/services/loadData.service';
-//import { TableData } from 'app/table';
 
 @Component({
     selector: 'my-app',
