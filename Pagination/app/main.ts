@@ -39,16 +39,16 @@ export class AppComponent implements OnInit {
     public sortType: boolean = true;
 
 
-    onChangeTable(config: any, page1: any = config.paging) {
-        if (page1 == null) {
-            page1 = 1;
+    onChangeTable(config: any, pageNum: any = config.paging) {
+        if (pageNum == null) {
+            pageNum = 1;
         }
         else {
-            page1 = page1.page;
+            pageNum = pageNum.page;
         }
-        var begin = ((page1 - 1) * this.itemsPerPage),
+        var begin = ((pageNum - 1) * this.itemsPerPage),
             end = begin + this.itemsPerPage;
-        var pageData = data.slice(begin, end);
+        var pageData = this.data.slice(begin, end);
         this.tableData = pageData;
     }
 
@@ -60,23 +60,37 @@ export class AppComponent implements OnInit {
             data = res;
         });
         setTimeout(() => {
-            this.length = data.length;
+            this.data=data;
+            console.log(this.data);
+            this.length = this.data.length;
             this.onChangeTable(this.config, null);
         }, 0);
     }
 
     changeSort(sortCol: any) {
         this.sortField = sortCol;
-        this.sortType = !this.sortType
+        this.sortType = !this.sortType;
         if (this.sortType) {
-            this.tableData.sort(function(a, b) {
-                return ((b[sortCol] < a[sortCol]) ? -1 : ((b[sortCol] > a[sortCol]) ? 1 : 0));;
-            });
+            if (this.sortField == 'salary') {
+                this.tableData.sort(function(a, b) {
+                    return ((parseInt(b[sortCol].replace(/\$*\,/gi, "")) < parseInt(a[sortCol].replace(/\$*\,/gi, ""))) ? -1 : ((parseInt(b[sortCol].replace(/\$*\,/gi, "")) > parseInt(a[sortCol].replace(/\$*\,/gi, ""))) ? 1 : 0));
+                });
+            } else {
+                this.tableData.sort(function(a, b) {
+                    return ((b[sortCol] < a[sortCol]) ? -1 : ((b[sortCol] > a[sortCol]) ? 1 : 0));
+                });
+            }
         }
         else {
-            this.tableData.sort(function(a, b) {
-                return ((a[sortCol] < b[sortCol]) ? -1 : ((a[sortCol] > b[sortCol]) ? 1 : 0));;
-            });
+            if (this.sortField == 'salary') {
+                this.tableData.sort(function(a, b) {
+                    return ((parseInt(a[sortCol].replace(/\$*\,/gi, "")) < parseInt(b[sortCol].replace(/\$*\,/gi, ""))) ? -1 : ((parseInt(a[sortCol].replace(/\$*\,/gi, "")) > parseInt(b[sortCol].replace(/\$*\,/gi, ""))) ? 1 : 0));
+                });
+            } else {
+                this.tableData.sort(function(a, b) {
+                    return ((a[sortCol] < b[sortCol]) ? -1 : ((a[sortCol] > b[sortCol]) ? 1 : 0));
+                });
+            }
         }
 
     }

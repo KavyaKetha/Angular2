@@ -1,28 +1,28 @@
 <table class="table table-striped">
     <thead>
         <tr >
-            <th *ngFor="#r of columns">{{r.title}} <a href="#"><i  class="glyphicon glyphicon-sort"(click)="changeSort(r.name)"></i>
+            <th *ngFor="#colHeading of columns">{{colHeading.title}} <a href="#"><i  class="glyphicon glyphicon-sort"(click)="changeSort(colHeading.name)"></i>
             </a></th>
         </tr>
     </thead>
-    <tr *ngFor="#r of tableData">
+    <tr *ngFor="#rowData of tableData">
         <td>
-            {{r.name}}
+            {{rowData.name}}
         </td>
         <td>
-            {{r.position}}
+            {{rowData.position}}
         </td>
         <td>
-            {{r.office}}
+            {{rowData.office}}
         </td>
         <td>
-            {{r.ext}}
+            {{rowData.ext}}
         </td>
         <td>
-            {{r.startDate}}
+            {{rowData.startDate}}
         </td>
         <td>
-            {{r.salary}}
+            ${{rowData.salary}}
         </td>
     </tr>
 </table>
