@@ -13,8 +13,6 @@ import { LoadData } from 'app/services/loadData.service';
     directives: [PAGINATION_DIRECTIVES, NgClass, NgIf, NgFor, CORE_DIRECTIVES, FORM_DIRECTIVES],
     providers: [LoadData]
 })
-
-
 export class AppComponent implements OnInit {
     public rows: Array<any> = [];
     public columns: Array<any> = [
