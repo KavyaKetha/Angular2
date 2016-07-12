@@ -1,21 +1,17 @@
-import {bootstrap} from 'angular2/platform/browser';
-
 import {Component, EventEmitter, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf, NgFor} from 'angular2/common';
 import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/components/pagination';
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {ROUTER,RouterOutlet,RouterLink} from 'angular2/router';
 
 import { LoadData } from 'app/services/loadData.service';
 
 @Component({
-    selector: 'my-app',
+    selector: 'show-table',
     templateUrl: 'partials/tableview.html',
-    directives: [PAGINATION_DIRECTIVES, NgClass, NgIf, NgFor, CORE_DIRECTIVES, FORM_DIRECTIVES],
+    directives: [PAGINATION_DIRECTIVES, NgClass, NgIf, NgFor, CORE_DIRECTIVES, FORM_DIRECTIVES,RouterLink],
     providers: [LoadData]
 })
-
-
-export class AppComponent implements OnInit {
+export class TableComponent implements OnInit {
     public rows: Array<any> = [];
     public columns: Array<any> = [
         { title: 'Name', name: 'name' },
@@ -63,7 +59,6 @@ export class AppComponent implements OnInit {
         });
         setTimeout(() => {
             this.data=data;
-            console.log(this.data);
             this.length = this.data.length;
             this.onChangeTable(this.config, null);
         }, 0);
@@ -97,5 +92,3 @@ export class AppComponent implements OnInit {
 
     }
 }
-
-bootstrap(AppComponent, [HTTP_PROVIDERS]);

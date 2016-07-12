@@ -1,0 +1,28 @@
+<table class="table table-striped">
+    <thead>
+        <tr >
+            <th>DETAILS</th>
+        </tr>
+    </thead>
+    <tr *ngFor="#rowData of result1">
+        <td>
+            {{rowData.name}}
+        </td>
+        <td>
+            {{rowData.position}}
+        </td>
+        <td>
+            {{rowData.office}}
+        </td>
+        <td>
+            {{rowData.ext}}
+        </td>
+        <td>
+            {{rowData.startDate}}
+        </td>
+        <td>
+            ${{rowData.salary}}
+        </td>
+        
+    </tr>
+</table>

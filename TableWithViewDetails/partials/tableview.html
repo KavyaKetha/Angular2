@@ -5,7 +5,7 @@
             </a></th>
         </tr>
     </thead>
-    <tr *ngFor="#rowData of tableData">
+    <tr *ngFor="#rowData of tableData; #i = index">
         <td>
             {{rowData.name}}
         </td>
@@ -25,7 +25,7 @@
             ${{rowData.salary}}
         </td>
         <td>
-            <a [routerLink]="['/viewDetails/:'+$index]">View</a>
+            <a [routerLink]="['Details',{id:i}]">View</a>
         </td>
     </tr>
 </table>
